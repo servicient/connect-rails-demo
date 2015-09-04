@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
 
   private
     def find_user
-      @user = Account.find_by_personemail ENV['LOGIN_EMAIL'] || 'jimthetrainer@aol.com'
+      if session[:user]
+        @user = Account.find_by_personemail session[:user]
+      else
+        redirect_to new_user_path
+      end
     end
 end
