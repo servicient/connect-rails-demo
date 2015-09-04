@@ -1,0 +1,9 @@
+Great you're ready to start helping #{@client.name} improve! 
+%br
+- if @client.contracts.empty?
+  = link_to 'Add to Scheduling', client_path(@client), method: :put
+- else
+  = link_to 'Add Amount', orders_path(client: @client.sfid), method: :post
+  - @contract.orders.each do |order|
+    %br
+    = link_to "View Order #{order.ordernumber} with #{order.pricebook.name}", order_path(order)

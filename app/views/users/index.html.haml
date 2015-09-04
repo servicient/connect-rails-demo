@@ -1,0 +1,14 @@
+Hello
+= @user.name
+
+- unless @user.pricebook_entry.present?
+  become an improve trainer
+  = link_to 'Set Price to $55.00*', products_path, method: :post
+- else
+  ready to help your clients improve?
+  = link_to 'Add new Client', new_client_path
+
+  %h3 Client List
+  %ul
+    - @user.contracts.each do |contract|
+      %li=link_to contract.client.name, client_path(contract.client, contract: contract.sfid)

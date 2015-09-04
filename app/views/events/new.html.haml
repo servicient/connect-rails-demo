@@ -1,0 +1,14 @@
+= form_for @event do |f|
+  = f.label :first_name
+  = f.text_field :firstname
+
+  = f.label :last_name
+  = f.text_field :lastname
+
+  = f.label :phone
+  = f.text_field :phone
+
+  = f.label :email
+  = f.text_field :personemail
+
+  = f.submit 'Schedule Session'

@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
 
   private
     def find_user
-      @user = Account.find_by_personemail 'trainerbob@gmail.com' # Bob.
+      @user = Account.find_by_personemail ENV['LOGIN_EMAIL'] || 'jimthetrainer@aol.com'
     end
 end
