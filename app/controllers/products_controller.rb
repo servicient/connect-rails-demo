@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     )
 
     @pricebook_entry = PricebookEntry.create(
-      serviceprovider__c:  user.sfid,
+      serviceprovider__c:  @user.sfid,
       name:                "#{@user.name}'s Hourly Rate",
       product2id:          product.sfid,
       pricebook2id:        pricebook.sfid,
