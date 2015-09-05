@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   private
     def find_user
       if session[:user]
-        @user = Account.find_by_personemail session[:user]
+        @user = Provider.find_by_personemail session[:user]
       else
         redirect_to new_user_path
       end

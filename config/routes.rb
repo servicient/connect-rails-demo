@@ -7,8 +7,11 @@ Rails.application.routes.draw do
   root 'users#show'
 
   resources :users
+  resources :providers
   resources :products
+  resources :pricebook_entries
   resources :clients
+  resources :products
   resources :orders
   resources :events
 

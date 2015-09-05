@@ -1,13 +1,9 @@
 %h3 Hello #{@user.name}
 
-%p Ready to start improving?
-
-- unless @user.pricebook_entry.present?
-  %p Become an improve trainer today.
-  %p 
-    = link_to 'Set up Rate', new_product_path
-- else
-  ready to help your clients improve at {@}
+= render 'manage_rate'
+%br
+- unless @user.product.pricebook_entries.empty?
+  Ready to help your clients improve?
   = link_to 'Add new Client', new_client_path
 
   %h3 Client List
