@@ -1,5 +1,5 @@
 - if @order.order_items.empty?
-  Add 10 sessions to #{@order.contract.client.name}'s account for #{@user.pricebook_entry.unitprice} a session?
+  Add 10 sessions to #{@order.contract.client.name}'s account for #{@user.unitprice} a session?
   / make form param to add in unit price
   = link_to 'Add 10 Credits', order_path(@order), method: :put
 - else
