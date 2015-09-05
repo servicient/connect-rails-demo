@@ -1,8 +1,9 @@
 - if @user.product.present?
-  - if @user.product.pricebook_entries.any?
-    %strong Current Rate #{number_to_currency @user.unitprice}
-    = link_to 'Change Rate', edit_pricebook_entry_path(@user.product.pricebook_entries.last.sfid)
-  - else
+  - if @user.unitprice == nil
     = link_to 'Set up Rate', new_pricebook_entry_path
+  - else
+    %strong Current Rate #{number_to_currency @user.unitprice}
+    = link_to 'Change Rate', edit_pricebook_entry_path(@user.product.pricebook_entries.last)
+    
 - else
   = link_to 'Request to become an Improve Trainer', products_path, method: :post  

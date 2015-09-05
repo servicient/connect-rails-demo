@@ -16,7 +16,7 @@ class PricebookEntriesController < ApplicationController
   end
 
   def edit
-    @pricebook_entry = PricebookEntry.find_by_sfid params[:id]
+    @pricebook_entry = PricebookEntry.find params[:id]
   end
 
   def update

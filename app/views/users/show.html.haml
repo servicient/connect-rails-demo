@@ -2,7 +2,7 @@
 
 = render 'manage_rate'
 %br
-- unless @user.product.pricebook_entries.empty?
+- unless @user.unitprice == nil
   Ready to help your clients improve?
   = link_to 'Add new Client', new_client_path
 
