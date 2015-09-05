@@ -6,7 +6,6 @@ class ClientsController < ApplicationController
   end
 
   def create
-    @contract =
     @client = Client.find_by_personemail params[:client][:personemail]
     
     if @client.blank?
@@ -23,13 +22,10 @@ class ClientsController < ApplicationController
   end
 
   def show
-    @contract = Contract.find_by_sfid params[:contract]
-    @client = @contract.client
+    @client = Client.find params[:id]
   end
 
   def update
-    # client record doesn't get sfid fast enough, can take up to a cpl min
-    # but maybe contracts don't need to play this role, could just be orders
     @client = Client.find params[:id]
     Contract.create(
         accountid: @user.sfid,
@@ -37,7 +33,7 @@ class ClientsController < ApplicationController
         customersignedid: @client.personcontactid,
         startdate: Date.today
     )
-    redirect_to root_path
+    redirect_to @client
   end
 
 end
