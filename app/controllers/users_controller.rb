@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :find_user, only: [:new, :create]
 
   def new
-    @user = User.new
+    @user = Provider.new
     # enter new email address form
   end
 
