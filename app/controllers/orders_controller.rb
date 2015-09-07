@@ -1,19 +1,16 @@
 class OrdersController < ApplicationController
-  def create
+  def create 
     pricebook = Pricebook.find_by_name 'Standard Price Book'
+    @contract = Contract.find params[:contract]
 
-    @order  = Order.find_by_sfid params[:order]
-    @client = Client.find_by_sfid params[:client]
     # re: @client.contracts.last just turn current clients resource into contracts resource
     @order = Order.create(
       accountid: @user.sfid,
-      contractid: @client.contracts.last.sfid, 
+      contractid: @contract.sfid, 
       pricebook2id: pricebook.sfid,
       effectivedate: Date.today,
       status: 'Draft'
     )
-
-    flash[:notice] = 'After waiting cpl min or so to make sure that the contract syncs there and back. :-0'
 
     redirect_to @order
   end

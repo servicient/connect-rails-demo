@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   resources :products
   resources :pricebook_entries
   resources :clients
-  resources :products
+  resources :contracts
   resources :orders
+  resources :order_items
   resources :events
 
   # Example of regular route:

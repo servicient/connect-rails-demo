@@ -1,0 +1,11 @@
+%h3 Training with #{@client.name}
+%h4 Help #{@client.firstname} improve! 
+- if @contract.orders.empty?
+  %h5 No open orders with client. Add an order with #{@client.firstname} to start scheduling.
+  = link_to "Create Order for #{@client.name}", orders_path(contract: @contract), method: :post
+  / next: make events schedulable without an order..and then they can be attached to an order later
+.row
+  - @client.contracts.last.orders.each do |order|
+    %br
+    = link_to "View Current Order #{order.ordernumber} with #{order.pricebook.name}", order_path(order)
+    / View Past Orders
