@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  # after_action :create_contract, only: :create
+  after_action :create_contract, only: :create
 
   def new
     @client = Client.new
@@ -13,27 +13,27 @@ class ClientsController < ApplicationController
 
         firstname:   params[:client][:firstname], 
         lastname:    params[:client][:lastname],
-        phone:       params[:client][:phone],
         personemail: params[:client][:personemail]
       )
     end
-
-    redirect_to @client
+    redirect_to root_path
   end
 
   def show
     @client = Client.find params[:id]
   end
 
-  def update
-    @client = Client.find params[:id]
+  private
+
+  def create_contract
+    sleep(5)
+
     Contract.create(
         accountid: @user.sfid,
         contractterm: 24,
-        customersignedid: @client.personcontactid,
+        customersignedid: @client.reload.personcontactid,
         startdate: Date.today
     )
-    redirect_to @client
   end
 
 end

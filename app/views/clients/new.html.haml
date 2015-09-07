@@ -1,14 +1,15 @@
 = form_for @client do |f|
-  = f.label :first_name
-  = f.text_field :firstname
-
-  = f.label :last_name
-  = f.text_field :lastname
-
-  = f.label :phone
-  = f.text_field :phone
-
-  = f.label :email
-  = f.text_field :personemail
-
-  = f.submit 'Add New Client'
+  .row
+    = f.label :first_name
+  .row
+    = f.text_field :firstname
+  .row
+    = f.label :last_name
+  .row
+    = f.text_field :lastname
+  .row
+    = f.label :email
+  .row
+    = f.text_field :personemail
+  .row
+    = f.submit 'Add New Client'
