@@ -1,12 +1,11 @@
 %h3 Hello #{@user.name}
-
 = render 'manage_rate'
 %br
 - unless @user.unitprice == nil
   Ready to help your clients improve?
   = link_to 'Add new Client', new_client_path
 
-  %h3 Client List
+  %h3 Current Client List
   %ul
     - @user.contracts.each do |contract|
       %li=link_to contract.client.name, client_path(contract.client, contract: contract.sfid)

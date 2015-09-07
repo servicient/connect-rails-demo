@@ -1,8 +1,12 @@
 Choose your user you boozer:
 = form_for @user do |f|
-  = f.label :email
-  = f.text_field :personemail
-
-  = f.submit 'Enable God Mode'
+  .span
+    = f.label :email
+    = f.text_field :personemail
+  .span
+    = label_tag :make_random_user
+    = check_box_tag :isrando
+  .span
+    = f.submit 'Enable God Mode'
 %p
 *An article about Uber's troubles with God Mode.

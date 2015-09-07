@@ -3,14 +3,23 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    # enter new email address form
+    # enter new email address
   end
 
   def create
-    @user = Provider.find_by_personemail params[:user][:personemail]
+    if params[:isrando] == '1'
+      @user = Provider.create(
+        firstname: Faker::Name.first_name,
+        lastname:  Faker::Name.last_name,
+        personemail:     Faker::Internet.email,
+        recordtypeid: '012700000009miG'
+      )
+    else
+      @user = Provider.find_by_personemail params[:user][:personemail]
+    end
+    # swap user
     session[:user] = @user.personemail
     redirect_to root_path
-    # swap user
   end
 
   def show
