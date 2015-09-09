@@ -3,7 +3,7 @@
     .span
       = link_to 'Set up Rate', new_pricebook_entry_path
     .span
-      %small Create product associated to user that stores default rate (list price)
+      %small Create standard pricebook entry for service provider, stores default list price (hourly rate)
   - else
     .span
       %strong Default Rate #{number_to_currency @user.unitprice}
@@ -12,4 +12,7 @@
         = link_to 'Change Default Rate', edit_pricebook_entry_path(@user.product.pricebook_entries.last)
     
 - else
-  = link_to 'Request to become an Improve Trainer', products_path, method: :post  
+  .span
+    = link_to 'Request to become an Improve Trainer', products_path, method: :post 
+  .span
+      %small Create 'sku' for service provider 
