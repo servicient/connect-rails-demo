@@ -2,6 +2,7 @@
 Demonstration of Available Data Models for 
 Service Provider-Client Management in Heroku Connect 
 
-(Schema for Creating a Standard Client and Orders)[https://drive.draw.io/?state=%7B%22ids%22:%5B%220Bw7sBFevJTpySXdIcXJGRVZJMjQ%22%5D,%22action%22:%22open%22,%22userId%22:%22102445369512491372979%22%7D#G0Bw7sBFevJTpySXdIcXJGRVZJMjQ]
+Schema for Creating Standard Orders:
+https://drive.google.com/a/mytennislessons.com/file/d/0Bw7sBFevJTpySXdIcXJGRVZJMjQ/view?usp=sharing
 
 
