@@ -16,6 +16,12 @@ class EventsController < ApplicationController
       enddatetime: 1.hour.from_now
     )
 
+    @event.order.order_items.last.update(availablequantity: (@event.order.order_items.last.availablequantity - 1))
+
+    # reduce available quantity of order?
+    # when it's created...option to change price
+    # and boolean below to say 'change this for future events on this order'
+
     redirect_to order_path(@order)
   end
 

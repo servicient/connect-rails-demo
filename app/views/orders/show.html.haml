@@ -24,7 +24,8 @@ Bring us the girl and wipeaway the debt for #{@order.client.name}.
 / likely won't want to depend on those fields for immediate view presentation
 - if @order.order_items.any?
   .span
-    = number_to_currency (@order.order_items.last.unitprice * @order.order_items.last.quantity)
+    / requires a delay to work..to update available quantity. could just add with create sync?
+    = number_to_currency (@order.order_items.last.unitprice * @order.order_items.last.availablequantity)
   .span
     = link_to 'Add Session', events_path(order: @order.sfid), method: :post # new_event_path(order: @order.sfid)
   %h4 Events
