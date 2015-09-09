@@ -1,6 +1,9 @@
 - if @user.product.present?
   - if @user.unitprice == nil
-    = link_to 'Set up Rate', new_pricebook_entry_path
+    .span
+      = link_to 'Set up Rate', new_pricebook_entry_path
+    .span
+      %small Create product associated to user that stores default rate (list price)
   - else
     .span
       %strong Default Rate #{number_to_currency @user.unitprice}

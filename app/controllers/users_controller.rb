@@ -9,9 +9,9 @@ class UsersController < ApplicationController
   def create
     if params[:isrando] == '1'
       @user = Provider.create(
-        firstname: Faker::Name.first_name,
-        lastname:  Faker::Name.last_name,
-        personemail:     Faker::Internet.email,
+        firstname:    Faker::Name.first_name,
+        lastname:     Faker::Name.last_name,
+        personemail:  Faker::Internet.email,
         recordtypeid: '012700000009miG'
       )
     else

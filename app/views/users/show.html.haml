@@ -5,6 +5,8 @@
   .span
     Ready to help your clients improve?
     = link_to 'Add new Client', new_client_path
+    .span
+      %small Creates client account and creates an open order with current user, used to attach Order Items (amount and sessions).
   %h3 Current Client List
   %ul
     - @user.orders.each do |order|
