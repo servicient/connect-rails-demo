@@ -19,16 +19,17 @@
     = f.hidden_field(:pricebookentryid, value: @user.product.pricebook_entries.last.sfid)
     = f.submit 'Add Order Item'
 %h3 Order History
-Bring us the girl and wipeaway the debt.
+Bring us the girl and wipeaway the debt for #{@order.client.name}.
 / SF calculated fields can take up to 10 min to sync back down, unless on streaming api
 / likely won't want to depend on those fields for immediate view presentation
-.span
-  = number_to_currency (@order.totalamount || @order.order_items.last.unitprice * @order.order_items.last.quantity)
-.span
-  = link_to 'Add Session', events_path(order: @order.sfid), method: :post # new_event_path(order: @order.sfid)
-%h4 Events
-- @order.events.each do |event|
-  %h5 #{event.subject}
-  = event.starts
-  = event.durationinminutes 
-  Minutes
+- if @order.order_items.any?
+  .span
+    = number_to_currency (@order.order_items.last.unitprice * @order.order_items.last.quantity)
+  .span
+    = link_to 'Add Session', events_path(order: @order.sfid), method: :post # new_event_path(order: @order.sfid)
+  %h4 Events
+  - @order.events.each do |event|
+    %h5 #{event.subject}
+    = event.starts
+    = event.durationinminutes 
+    Minutes

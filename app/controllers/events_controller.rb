@@ -11,7 +11,7 @@ class EventsController < ApplicationController
       subject: "Session with #{@order.client.name}",
       whatid: @order.sfid,
       whoid: @order.client.personcontactid,
-      accountid: @order.account.sfid,
+      accountid: @order.provider.sfid,
       startdatetime: Time.now,
       enddatetime: 1.hour.from_now
     )

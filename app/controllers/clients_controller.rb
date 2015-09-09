@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  after_action :create_contract, only: :create
+  after_action :create_initial_order, only: :create
 
   def new
     @client = Client.new
@@ -25,15 +25,25 @@ class ClientsController < ApplicationController
 
   private
 
-  def create_contract
-    sleep(5)
+  # def create_contract
+  #   Contract.create(
+  #       accountid: @user.sfid,
+  #       contractterm: 24,
+  #       customersignedid: @client.reload.personcontactid,
+  #       startdate: Date.today
+  #   )
+  # end
 
-    Contract.create(
+    def create_initial_order
+      sleep(10)
+      pricebook = Pricebook.find_by_name 'Standard Price Book'
+
+      @order = Order.create(
         accountid: @user.sfid,
-        contractterm: 24,
-        customersignedid: @client.reload.personcontactid,
-        startdate: Date.today
-    )
-  end
-
+        customerauthorizedbyid: @client.reload.personcontactid,
+        pricebook2id: pricebook.sfid,
+        effectivedate: Date.today,
+        status: 'Draft' # make an activated or whatever status
+      )
+    end
 end

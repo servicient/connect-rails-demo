@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
     # re: @client.contracts.last just turn current clients resource into contracts resource
     @order = Order.create(
       accountid: @user.sfid,
-      contractid: @contract.sfid, 
+      # contractid: @contract.sfid, 
       pricebook2id: pricebook.sfid,
       effectivedate: Date.today,
       status: 'Draft'

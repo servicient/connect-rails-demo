@@ -7,5 +7,5 @@
     = link_to 'Add new Client', new_client_path
   %h3 Current Client List
   %ul
-    - @user.contracts.each do |contract|
-      %li=link_to contract.client.name, contract_path(contract)
+    - @user.orders.each do |order|
+      %li=link_to order.client.name, order_path(order)
